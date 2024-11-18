@@ -1,12 +1,11 @@
-﻿@model IEnumerable<Pueba1.Models.Categoria>
+﻿@model IEnumerable<Pueba1.Models.LibrosAutor>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Gestion de Categorías</h1>
+<h1 class="text-center">Gestión de Libros por Autor</h1>
 <br />
-
 <style>
 
     /* Estilo para la tabla tipo cebra */
@@ -17,9 +16,7 @@
     .table tbody tr:nth-child(even) {
         background-color: #fef1f7; /* Fila par con fondo #fef1f7 */
     }
-
-
-    /* Botón "Registrar autor" */
+    /* Botón "Registrar LibrosAutor" */
     .btn-registrar {
         background-color: #D784A6; /* Palo de rosa */
         color: white;
@@ -71,17 +68,17 @@
         width: auto; /* Ajustar el ancho al contenido */
     }
 
-    /* Contenedor para el botón "Registrar autor" */
+    /* Contenedor para botón y tabla */
     .registrar-container {
         display: flex;
-        margin-left: 259px; /* Alinea el botón a la izquierda */
+        margin-left: 260px; /* Alinea el botón a la izquierda */
         margin-bottom: 15px;
     }
 </style>
 
 <div class="registrar-container">
     <a class="btn btn-registrar" asp-action="Create">
-        <i class="fi fi-ss-add icon-blanco"></i> Registrar Categoría
+        <i class="fi fi-ss-add icon-blanco"></i> Registrar Libros por Autor
     </a>
 </div>
 
@@ -89,29 +86,25 @@
     <table class="table" id="example">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </th>
-
-                <th></th>
+                <th>Nombre Autor</th>
+                <th>Titulo Libro</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@Html.DisplayFor(modelItem => item.IdAutorNavigation.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IsbnNavigation.Titulo)</td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-
-                    <td class="d-flex justify-content-end">
-                        <a class="btn btn-tabla mx-1 " asp-action="Edit" asp-route-id="@item.CodigoCategoria">
+                        <a class="btn btn-tabla mx-1" asp-action="Edit" asp-route-id="@item.IdLibrosAutor">
                             <i class="fi fi-ss-pencil icon-blanco"></i>
                         </a>
-                        <a class="btn btn-tabla mx-2" asp-action="Details" asp-route-id="@item.CodigoCategoria">
+                        <a class="btn btn-tabla mx-2" asp-action="Details" asp-route-id="@item.IdLibrosAutor">
                             <i class="fi fi-ss-file-circle-info icon-blanco"></i>
                         </a>
-                        <a class="btn btn-tabla" asp-action="Delete" asp-route-id="@item.CodigoCategoria">
+                        <a class="btn btn-tabla" asp-action="Delete" asp-route-id="@item.IdLibrosAutor">
                             <i class="fi fi-ss-trash icon-blanco"></i>
                         </a>
                     </td>
@@ -156,10 +149,8 @@
                         text: 'Filtrar',
                         className: 'botonColvis btn'
                     }
-
                 ]
             }
-
         },
         scrollX: true,
         initComplete: function (json, settings) {

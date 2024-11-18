@@ -7,6 +7,15 @@
 <h1 class="text-center">Gestion de Autores</h1>
 <br />
 <style>
+
+    /* Estilo para la tabla tipo cebra */
+    .table tbody tr:nth-child(odd) {
+        background-color: white; /* Fila impar con fondo blanco */
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #fef1f7; /* Fila par con fondo #fef1f7 */
+    }
     /* Botón "Registrar autor" */
     .btn-registrar {
         background-color: #D784A6; /* Palo de rosa */
@@ -62,7 +71,7 @@
     /* Contenedor para botón y tabla */
     .registrar-container {
         display: flex;
-        margin-left: 350px; /* Alinea el botón a la izquierda */
+        margin-left: 258px; /* Alinea el botón a la izquierda */
         margin-bottom: 15px;
     }
 </style>
@@ -102,7 +111,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Nacionalidad)
                     </td>
-                    <td>
+                    <td >
                         <a class="btn btn-tabla mx-1" asp-action="Edit" asp-route-id="@item.IdAutor">
                             <i class="fi fi-ss-pencil icon-blanco"></i>
                         </a>

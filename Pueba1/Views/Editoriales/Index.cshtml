@@ -8,6 +8,16 @@
 <br />
 
 <style>
+
+    /* Estilo para la tabla tipo cebra */
+    .table tbody tr:nth-child(odd) {
+        background-color: white; /* Fila impar con fondo blanco */
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #fef1f7; /* Fila par con fondo #fef1f7 */
+    }
+
     /* Botón "Registrar Editorial" */
     .btn-registrar {
         background-color: #D784A6; /* Palo de rosa */
@@ -63,7 +73,7 @@
     /* Contenedor para el botón "Registrar Editorial" */
     .registrar-container {
         display: flex;
-        margin-left: 190px; /* Alinea el botón a la izquierda */
+        margin-left: 50px; /* Alinea el botón a la izquierda */
         margin-bottom: 15px;
     }
 </style>
@@ -115,7 +125,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Sitioweb)
                     </td>
-                    <td>
+                    <td class="d-flex">
                         <a class="btn btn-tabla mx-1" asp-action="Edit" asp-route-id="@item.Nit">
                             <i class="fi fi-ss-pencil icon-blanco"></i>
                         </a>
