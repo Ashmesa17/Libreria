@@ -1,0 +1,130 @@
+﻿@model Pueba1.Models.Editoriale
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container mt-4">
+    <h4>Eliminar Editorial</h4>
+    <hr />
+    <div class="card shadow-lg mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Nombres)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Nombres)</p>
+                </dd>
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Telefono)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Telefono)</p>
+                </dd>
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Direccion)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Direccion)</p>
+                </dd>
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Email)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Email)</p>
+                </dd>
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Sitioweb)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Sitioweb)</p>
+                </dd>
+            </dl>
+
+            <form id="deleteForm" asp-action="Delete">
+                <input type="hidden" asp-for="Nit" />
+                <div class="form-group mt-3">
+                    <input type="submit" value="Eliminar" class="btn btn-palo-rosa btn-block mb-3" />
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <a asp-action="Index" class="btn btn-gris btn-block">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        /* Estilos generales para la tarjeta */
+        .card {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botón palo de rosa */
+        .btn-palo-rosa {
+            background-color: #D784A6; /* Palo de rosa */
+            color: white;
+            border: none;
+            height: 50px;
+            font-size: 16px;
+        }
+
+            .btn-palo-rosa:hover {
+                background-color: #B3638D; /* Tonalidad más oscura */
+            }
+
+        /* Botón gris */
+        .btn-gris {
+            background-color: #6c757d; /* Gris */
+            color: white;
+            border: none;
+            height: 50px;
+            font-size: 16px;
+        }
+
+            .btn-gris:hover {
+                background-color: #5a6368; /* Gris más oscuro */
+            }
+
+        /* Asegura que los botones sean del mismo tamaño */
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Estilo para los textos dentro de los campos */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .font-weight-bold {
+            font-weight: bold;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Al hacer submit en el formulario, prevenimos la acción y mostramos un alert
+        document.getElementById("deleteForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevenimos el envío del formulario
+
+            // Mostrar alerta de que no se puede eliminar
+            Swal.fire({
+                title: 'No es posible eliminar el registro',
+                text: 'Este registro no puede ser eliminado en este momento.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#D784A6' // Palo de rosa
+            });
+        });
+    </script>
+}

@@ -1,0 +1,158 @@
+﻿@model Pueba1.Models.Autor
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container mt-4">
+    <h4>Eliminar Autor</h4>
+    <hr />
+    <div class="card shadow-lg mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Nombre)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Nombre)</p>
+                </dd>
+
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Apellido)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Apellido)</p>
+                </dd>
+
+                <dt class="col-sm-3">
+                    <label class="font-weight-bold">@Html.DisplayNameFor(model => model.Nacionalidad)</label>
+                </dt>
+                <dd class="col-sm-9">
+                    <p>@Html.DisplayFor(model => model.Nacionalidad)</p>
+                </dd>
+            </dl>
+
+            <!-- Botón para eliminar -->
+            <div class="form-group mt-3">
+                <button id="deleteBtn" class="btn btn-danger btn-block mb-3">Eliminar</button>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <a asp-action="Index" class="btn btn-secondary btn-block">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmar eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar este registro? Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Formulario de eliminación -->
+<form id="deleteForm" asp-action="Delete" method="post" style="display: none;">
+    @Html.HiddenFor(model => model.IdAutor)
+</form>
+
+@section Styles {
+    <style>
+        /* Estilos generales para la tarjeta */
+        .card {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botón de eliminar (rojo) */
+        .btn-danger {
+            background-color: #D784A6; /* Rojo */
+            color: white;
+            border: none;
+            height: 50px;
+            font-size: 16px;
+        }
+
+            .btn-danger:hover {
+                background-color: #B3638D; /* Rojo más oscuro */
+            }
+
+        /* Botón gris */
+        .btn-secondary {
+            background-color: #6c757d; /* Gris */
+            color: white;
+            border: none;
+            height: 50px;
+            font-size: 16px;
+        }
+
+            .btn-secondary:hover {
+                background-color: #5a6368; /* Gris más oscuro */
+            }
+
+        /* Asegura que los botones sean del mismo tamaño */
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Estilo para los textos dentro de los campos */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .font-weight-bold {
+            font-weight: bold;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mostrar modal de confirmación al hacer clic en el botón Eliminar
+        document.getElementById("deleteBtn").addEventListener("click", function () {
+            $('#deleteModal').modal('show');
+        });
+
+        // Al hacer clic en el botón de Confirmar Eliminación
+        document.getElementById("confirmDeleteBtn").addEventListener("click", function () {
+            // Cerrar el modal
+            $('#deleteModal').modal('hide');
+
+            // Mostrar SweetAlert indicando que el registro fue eliminado correctamente
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'El registro ha sido eliminado correctamente.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#D784A6'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Enviar el formulario después de confirmar en SweetAlert
+                    document.getElementById("deleteForm").submit();
+                }
+            });
+        });
+    </script>
+
+}

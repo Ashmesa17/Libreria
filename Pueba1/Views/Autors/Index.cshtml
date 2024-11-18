@@ -1,0 +1,166 @@
+﻿@model IEnumerable<Pueba1.Models.Autor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Gestion de Autores</h1>
+<br />
+<style>
+    /* Botón "Registrar autor" */
+    .btn-registrar {
+        background-color: #D784A6; /* Palo de rosa */
+        color: white;
+        border: none;
+    }
+
+        .btn-registrar:hover {
+            background-color: #B3638D; /* Tonalidad más oscura */
+            color: white;
+        }
+
+    /* Botones de la tabla: Editar, Detalle, Eliminar */
+    .btn-tabla {
+        background-color: #D784A6; /* Palo de rosa */
+        color: white;
+        border: none;
+    }
+
+        .btn-tabla:hover {
+            background-color: #B3638D; /* Tonalidad más oscura */
+            color: white;
+        }
+
+    /* Botones de exportación */
+    .botonCopiar, .botonCsv, .botonExcel, .botonPdf, .botonPrint, .botonColvis {
+        background-color: #D784A6 !important; /* Palo de rosa */
+        color: white !important;
+    }
+
+        .botonCopiar:hover, .botonCsv:hover, .botonExcel:hover, .botonPdf:hover, .botonPrint:hover, .botonColvis:hover {
+            background-color: #B3638D !important; /* Tonalidad más oscura */
+            color: white !important;
+        }
+
+    /* Asegurar que los íconos sean blancos */
+    .icon-blanco {
+        color: white !important;
+    }
+
+    /* Centrar la tabla */
+    .table-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .table {
+        width: auto; /* Ajustar el ancho al contenido */
+    }
+
+    /* Contenedor para botón y tabla */
+    .registrar-container {
+        display: flex;
+        margin-left: 350px; /* Alinea el botón a la izquierda */
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="registrar-container">
+    <a class="btn btn-registrar" asp-action="Create">
+        <i class="fi fi-ss-add icon-blanco"></i> Registrar autor
+    </a>
+</div>
+
+<div class="table-container">
+    <table class="table" id="example">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nacionalidad)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nacionalidad)
+                    </td>
+                    <td>
+                        <a class="btn btn-tabla mx-1" asp-action="Edit" asp-route-id="@item.IdAutor">
+                            <i class="fi fi-ss-pencil icon-blanco"></i>
+                        </a>
+                        <a class="btn btn-tabla mx-2" asp-action="Details" asp-route-id="@item.IdAutor">
+                            <i class="fi fi-ss-file-circle-info icon-blanco"></i>
+                        </a>
+                        <a class="btn btn-tabla" asp-action="Delete" asp-route-id="@item.IdAutor">
+                            <i class="fi fi-ss-trash icon-blanco"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    new DataTable('#example', {
+        layout: {
+            topStart: {
+                buttons: [
+                    {
+                        extend: 'copy',
+                        text: '<i class="fi fi-ss-duplicate icon-blanco"></i>',
+                        className: 'botonCopiar btn'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="fi fi-ss-file-csv icon-blanco"></i>',
+                        className: 'botonCsv btn'
+                    },
+                    {
+                        extend: 'excel',
+                        text: '<i class="fi fi-ss-file-excel icon-blanco"></i>',
+                        className: 'botonExcel btn'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="fi fi-ss-file-pdf icon-blanco"></i>',
+                        className: 'botonPdf btn'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fi fi-ss-print icon-blanco"></i>',
+                        className: 'botonPrint btn'
+                    },
+                    {
+                        extend: 'colvis',
+                        text: 'Filtrar',
+                        className: 'botonColvis btn'
+                    }
+                ]
+            }
+        },
+        scrollX: true,
+        initComplete: function (json, settings) {
+            $(".dt-buttons").removeClass("dt-buttons");
+            $(".dt-button").addClass("botones");
+        }
+    });
+</script>

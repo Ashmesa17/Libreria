@@ -1,0 +1,125 @@
+﻿@model Pueba1.Models.Editoriale
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Registrar Editorial</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header text-center">
+                <h4>Registrar Editorial</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <!-- Fila con dos columnas -->
+                    <div class="row">
+                        <!-- Primera columna -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Nit" class="control-label">Nit</label>
+                                <input asp-for="Nit" class="form-control" />
+                                <span asp-validation-for="Nit" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Nombres" class="control-label">Nombres</label>
+                                <input asp-for="Nombres" class="form-control" />
+                                <span asp-validation-for="Nombres" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Telefono" class="control-label">Telefono</label>
+                                <input asp-for="Telefono" class="form-control" />
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Segunda columna -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Direccion" class="control-label">Direccion</label>
+                                <input asp-for="Direccion" class="form-control" />
+                                <span asp-validation-for="Direccion" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label">Email</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Sitioweb" class="control-label">Sitio web</label>
+                                <input asp-for="Sitioweb" class="form-control" />
+                                <span asp-validation-for="Sitioweb" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Registrar" class="btn btn-palo-rosa btn-block" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="Index" class="btn btn-gris">Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        /* Estilos generales para la tarjeta */
+        .card {
+            margin-top: 50px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botón palo de rosa */
+        .btn-palo-rosa {
+            background-color: #D784A6; /* Palo de rosa */
+            color: white;
+            border: none;
+            width: 100%; /* Ocupa todo el ancho */
+            height: 50px;
+            font-size: 16px;
+        }
+
+            .btn-palo-rosa:hover {
+                background-color: #B3638D; /* Tonalidad más oscura */
+            }
+
+        /* Botón gris */
+        .btn-gris {
+            background-color: #6c757d; /* Gris */
+            color: white;
+            border: none;
+            width: 100%; /* Ocupa todo el ancho */
+            height: 50px;
+            font-size: 16px;
+        }
+
+            .btn-gris:hover {
+                background-color: #5a6368; /* Gris más oscuro */
+            }
+
+        /* Centrado de los botones */
+        .form-group button {
+            margin-top: 20px; /* Espacio entre los botones */
+        }
+    </style>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

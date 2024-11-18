@@ -1,0 +1,134 @@
+﻿@model Pueba1.Models.Libro
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Registrar Libro</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header text-center">
+                <h4>Registrar Libro</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <!-- Fila con dos columnas -->
+                    <div class="row">
+                        <!-- Primera columna -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Isbn" class="control-label">Isbn</label>
+                                <input asp-for="Isbn" class="form-control" />
+                                <span asp-validation-for="Isbn" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Titulo" class="control-label">Título</label>
+                                <input asp-for="Titulo" class="form-control" />
+                                <span asp-validation-for="Titulo" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Descripcion" class="control-label">Descripción</label>
+                                <input asp-for="Descripcion" class="form-control" />
+                                <span asp-validation-for="Descripcion" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Segunda columna -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="NombreAutor" class="control-label">Nombre Autor</label>
+                                <input asp-for="NombreAutor" class="form-control" />
+                                <span asp-validation-for="NombreAutor" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Publicacion" class="control-label">Fecha de Publicación</label>
+                                <input asp-for="Publicacion" class="form-control" type="date" />
+                                <span asp-validation-for="Publicacion" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FechaRegistro" class="control-label">Fecha de Registro</label>
+                                <input asp-for="FechaRegistro" class="form-control" type="date"/>
+                                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campos de selección en una nueva fila -->
+                    <div class="row">
+                        <!-- Primera columna -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CodigoCategoria" class="control-label">Categoría</label>
+                                <select asp-for="CodigoCategoria" class="form-control" asp-items="ViewBag.CodigoCategoria"></select>
+                            </div>
+                        </div>
+
+                        <!-- Segunda columna -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="NitEditorial" class="control-label">Editorial</label>
+                                <select asp-for="NitEditorial" class="form-control" asp-items="ViewBag.NitEditorial"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón de registro -->
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Registrar" class="btn btn-palo-rosa btn-block" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="Index" class="btn btn-gris">Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        /* Estilos generales para la tarjeta */
+        .card {
+            margin-top: 80px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botón palo de rosa */
+        .btn-palo-rosa {
+            background-color: #D784A6; /* Palo de rosa */
+            color: white;
+            border: none;
+            width: 100%; /* Ocupa todo el ancho */
+            height: 50px;
+            font-size: 16px;
+        }
+
+        .btn-palo-rosa:hover {
+            background-color: #B3638D; /* Tonalidad más oscura */
+        }
+
+        /* Botón gris */
+        .btn-gris {
+            background-color: #6c757d; /* Gris */
+            color: white;
+            border: none;
+            width: 100%; /* Ocupa todo el ancho */
+            height: 50px;
+            font-size: 16px;
+        }
+
+        .btn-gris:hover {
+            background-color: #5a6368; /* Gris más oscuro */
+        }
+    </style>
+}
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

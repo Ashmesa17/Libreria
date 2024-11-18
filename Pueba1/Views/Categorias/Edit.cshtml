@@ -1,0 +1,88 @@
+﻿@model Pueba1.Models.Categoria
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <h1 class="my-4 text-center">Editar Categoría</h1>
+
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header text-center">
+                    <h4>Editar Categoría</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="CodigoCategoria" />
+
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="control-label">Nombre</label>
+                            <input asp-for="Nombre" class="form-control" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+
+                        <!-- Botón de guardar -->
+                        <div class="form-group mt-3">
+                            <input type="submit" value="Guardar" class="btn btn-palo-rosa btn-block" />
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-gris">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+
+@section Styles {
+    <style>
+        /* Estilos generales para la tarjeta */
+        .card {
+            margin-top: 80px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botón palo de rosa */
+        .btn-palo-rosa {
+            background-color: #D784A6; /* Palo de rosa */
+            color: white;
+            border: none;
+            width: 100%; /* Ocupa todo el ancho */
+            height: 50px;
+            font-size: 16px;
+        }
+
+        .btn-palo-rosa:hover {
+            background-color: #B3638D; /* Tonalidad más oscura */
+        }
+
+        /* Botón gris */
+        .btn-gris {
+            background-color: #6c757d; /* Gris */
+            color: white;
+            border: none;
+            width: 100%; /* Ocupa todo el ancho */
+            height: 50px;
+            font-size: 16px;
+        }
+
+        .btn-gris:hover {
+            background-color: #5a6368; /* Gris más oscuro */
+        }
+    </style>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
