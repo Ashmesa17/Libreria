@@ -22,7 +22,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="CodigoCategoria" class="control-label">Código de Categoría</label>
-                                <input asp-for="CodigoCategoria" class="form-control" placeholder="Ingrese el código de la categoría" />
+                                <input asp-for="CodigoCategoria" class="form-control" placeholder="Ingrese el código de la categoría" required />
                                 <span asp-validation-for="CodigoCategoria" class="text-danger"></span>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="Nombre" class="control-label">Nombre</label>
-                                <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nombre de la categoría" />
+                                <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nombre de la categoría" required />
                                 <span asp-validation-for="Nombre" class="text-danger"></span>
                             </div>
                         </div>

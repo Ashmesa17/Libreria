@@ -22,19 +22,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="Nit" class="control-label">Nit</label>
-                                <input asp-for="Nit" class="form-control" />
+                                <input asp-for="Nit" class="form-control" required />
                                 <span asp-validation-for="Nit" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Nombres" class="control-label">Nombres</label>
-                                <input asp-for="Nombres" class="form-control" />
+                                <input asp-for="Nombres" class="form-control" required />
                                 <span asp-validation-for="Nombres" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Telefono" class="control-label">Telefono</label>
-                                <input asp-for="Telefono" class="form-control" />
+                                <input asp-for="Telefono" class="form-control" required />
                                 <span asp-validation-for="Telefono" class="text-danger"></span>
                             </div>
                         </div>
@@ -43,19 +43,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="Direccion" class="control-label">Direccion</label>
-                                <input asp-for="Direccion" class="form-control" />
+                                <input asp-for="Direccion" class="form-control" required />
                                 <span asp-validation-for="Direccion" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Email" class="control-label">Email</label>
-                                <input asp-for="Email" class="form-control" />
+                                <input asp-for="Email" class="form-control" required />
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Sitioweb" class="control-label">Sitio web</label>
-                                <input asp-for="Sitioweb" class="form-control" />
+                                <input asp-for="Sitioweb" class="form-control" required />
                                 <span asp-validation-for="Sitioweb" class="text-danger"></span>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
     <style>
         /* Estilos generales para la tarjeta */
         .card {
-            margin-top: 50px;
+            margin-top: 10px;
             border-radius: 10px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

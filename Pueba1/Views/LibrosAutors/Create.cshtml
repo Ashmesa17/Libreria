@@ -16,7 +16,7 @@
 
                     <div class="form-group">
                         <label asp-for="IdAutor" class="control-label">Autor</label>
-                        <select asp-for="IdAutor" class="form-control" asp-items="ViewBag.IdAutor">
+                        <select asp-for="IdAutor" class="form-control" asp-items="ViewBag.IdAutor" required>
                             <option value="">Seleccione un autor</option>
                         </select>
                         <span asp-validation-for="IdAutor" class="text-danger"></span>
@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <label asp-for="Isbn" class="control-label">ISBN</label>
-                        <select asp-for="Isbn" class="form-control" asp-items="ViewBag.Isbn">
+                        <select asp-for="Isbn" class="form-control" asp-items="ViewBag.Isbn" required>
                             <option value="">Seleccione un libro</option>
                         </select>
                         <span asp-validation-for="Isbn" class="text-danger"></span>

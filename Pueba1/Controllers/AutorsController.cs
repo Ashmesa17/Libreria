@@ -62,6 +62,7 @@ namespace Pueba1.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(autor);
+
         }
 
         // GET: Autors/Edit/5
