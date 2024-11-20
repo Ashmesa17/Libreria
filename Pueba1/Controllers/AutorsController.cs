@@ -146,7 +146,7 @@ namespace Pueba1.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         private bool AutorExists(int id)
@@ -155,3 +155,4 @@ namespace Pueba1.Controllers
         }
     }
 }
+

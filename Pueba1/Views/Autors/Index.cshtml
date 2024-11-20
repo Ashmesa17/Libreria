@@ -28,12 +28,41 @@
             color: white;
         }
 
-    /* Botones de la tabla: Editar, Detalle, Eliminar */
-    .btn-tabla {
-        background-color: #D784A6; /* Palo de rosa */
+    /* Botón "Editar" */
+    .btn-editar {
+        background-color: #A8D5BA; /* Verde pastel */
         color: white;
         border: none;
     }
+
+        .btn-editar:hover {
+            background-color: #86BFA3; /* Verde más oscuro */
+            color: white;
+        }
+
+    /* Botón "Detalles" */
+    .btn-detalles {
+        background-color: #F3C7A4; /* Naranja pastel */
+        color: white;
+        border: none;
+    }
+
+        .btn-detalles:hover {
+            background-color: #E0B38E; /* Naranja más oscuro */
+            color: white;
+        }
+
+    /* Botón "Eliminar" */
+    .btn-eliminar {
+        background-color: #F2A6A6; /* Rojo pastel */
+        color: white;
+        border: none;
+    }
+
+        .btn-eliminar:hover {
+            background-color: #D98C8C; /* Rojo más oscuro */
+            color: white;
+        }
 
         .btn-tabla:hover {
             background-color: #B3638D; /* Tonalidad más oscura */
@@ -111,17 +140,17 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Nacionalidad)
                     </td>
-                    <td >
-                        <a class="btn btn-tabla mx-1" asp-action="Edit" asp-route-id="@item.IdAutor">
-                            <i class="fi fi-ss-pencil icon-blanco"></i>
-                        </a>
-                        <a class="btn btn-tabla mx-2" asp-action="Details" asp-route-id="@item.IdAutor">
-                            <i class="fi fi-ss-file-circle-info icon-blanco"></i>
-                        </a>
-                        <a class="btn btn-tabla" asp-action="Delete" asp-route-id="@item.IdAutor">
-                            <i class="fi fi-ss-trash icon-blanco"></i>
-                        </a>
-                    </td>
+                    <td>
+    <a class="btn btn-editar mx-1" asp-action="Edit" asp-route-id="@item.IdAutor">
+        <i class="fi fi-ss-pencil icon-blanco"></i>
+    </a>
+    <a class="btn btn-detalles mx-2" asp-action="Details" asp-route-id="@item.IdAutor">
+        <i class="fi fi-ss-file-circle-info icon-blanco"></i>
+    </a>
+    <a class="btn btn-eliminar" asp-action="Delete" asp-route-id="@item.IdAutor">
+        <i class="fi fi-ss-trash icon-blanco"></i>
+    </a>
+</td>
                 </tr>
             }
         </tbody>
